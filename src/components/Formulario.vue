@@ -3,8 +3,11 @@
     <div class="container">
       <h3>Lista de compras</h3>
       <input type="text" v-model="produto" placeholder="Nome do produto" />
+      <p Style="color:red" v-show="mensagem">O nome é obrigatório</p>
       <input type="number" v-model="quantidade" placeholder="0" />
-      <input type="file" />
+      <p Style="color:red" v-show="mensagem">
+        A quantidade tem que ser maior que 0
+      </p>
       <input type="submit" value="Enviar" />
     </div>
   </form>
@@ -13,16 +16,35 @@
 <script>
 export default {
   name: "HelloWorld",
+  emits: ["conteudo"],
   data() {
     return {
       produto: "",
       quantidade: "",
+      conteudo: [],
+      mensagem: false,
     };
   },
   methods: {
     previewFiles() {
-      console.log(this.produto);
-      console.log(this.quantidade);
+      if (
+        this.produto.trim() === "" ||
+        this.quantidade === "" ||
+        this.quantidade <= 0
+      ) {
+        this.mensagem = true;
+        this.produto = "";
+        this.quantidade = "";
+      } else {
+        this.mensagem = false;
+        this.conteudo.push({
+          produto: this.produto,
+          quantidade: this.quantidade,
+        });
+        this.$emit("conteudo", this.conteudo);
+        this.produto = "";
+        this.quantidade = "";
+      }
     },
   },
 };
@@ -32,7 +54,6 @@ export default {
 .fundo {
   background-color: #ccc;
   width: 320px;
-  margin: 20px auto;
   padding: 5px 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -51,7 +72,7 @@ input {
   border: none;
   margin: 10px 0;
 }
-input[type="button"] {
+input[type="submit"] {
   padding: 10px;
   border: none;
   border-radius: 10px;
@@ -60,7 +81,7 @@ input[type="button"] {
   font-weight: 500;
   color: #fff;
 }
-input[type="button"]:hover {
+input[type="submit"]:hover {
   background-color: rgb(1, 1, 145);
   transition: 1s;
 }
