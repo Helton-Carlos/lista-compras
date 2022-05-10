@@ -24,6 +24,9 @@ export default {
 </script>
 
 <style>
+table {
+  width: 520px;
+}
 .base {
   background-color: blue;
   color: #fff;
@@ -41,5 +44,11 @@ td {
 .flex-coluna {
   display: flex;
   flex-direction: column;
+}
+@media screen and (max-width: 1086px) {
+  table {
+    width: 100%;
+    margin-top: 20px;
+  }
 }
 </style>

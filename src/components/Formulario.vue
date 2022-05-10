@@ -53,7 +53,7 @@ export default {
 <style scoped>
 .fundo {
   background-color: #ccc;
-  width: 320px;
+  width: 520px;
   padding: 5px 10px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -92,5 +92,11 @@ input[type="file"] {
   background-color: white;
   font-weight: 500;
   color: rgb(105, 105, 105);
+}
+@media screen and (max-width: 1086px) {
+  .fundo {
+    width: 95%;
+    margin-top: 20px;
+  }
 }
 </style>

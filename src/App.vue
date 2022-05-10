@@ -42,4 +42,10 @@ export default {
   margin: 50px auto;
   padding: 10px;
 }
+
+@media screen and (max-width: 1086px) {
+  .flex {
+    flex-direction: column;
+  }
+}
 </style>
