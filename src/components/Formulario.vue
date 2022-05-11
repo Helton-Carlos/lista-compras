@@ -71,6 +71,7 @@ input {
   border-radius: 7px;
   border: none;
   margin: 10px 0;
+  outline-color: blue;
 }
 input[type="submit"] {
   padding: 10px;
